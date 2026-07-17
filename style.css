@@ -995,3 +995,46 @@ body {
         grid-template-columns: repeat(3, 1fr) !important; /* Ajusta para 3 colunas se a tela encolher */
     }
 }
+
+/* ==========================================================================
+   CORREÇÃO DO CONTEÚDO INTERNO DOS CARDS (IMPEDIR QUEBRA DE LINHA)
+   ========================================================================== */
+
+/* Ajusta o flex dos cards para alinhar tudo na horizontal e distribuir o espaço */
+.dash-card {
+    display: flex !important;
+    flex-direction: row !important; /* Força ícone e textos lado a lado */
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 12px 14px !important; /* Ajusta o respiro interno */
+    gap: 10px !important; /* Espaçamento entre o ícone e os textos */
+    box-sizing: border-box !important;
+}
+
+/* Container que segura o título e o número dentro do card */
+.dash-card .card-info {
+    display: flex !important;
+    flex-direction: column !important; /* Título em cima, número embaixo */
+    align-items: flex-start !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* Ajuste fino dos títulos dos cards no PC para não quebrarem */
+.dash-card h3 {
+    font-size: 11px !important; /* Reduz levemente para caber em telas menores de PC */
+    font-weight: 700 !important;
+    white-space: nowrap !important; /* Impede o título de quebrar linha */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; /* Adiciona '...' se o texto for gigante */
+    margin: 0 !important;
+}
+
+/* Ajuste dos números gigantes (Ex: 7901, 2) */
+.dash-card .card-info span, 
+.dash-card .card-info p,
+.dash-card h3 + * { 
+    font-size: 20px !important; /* Tamanho ideal para o número se destacar */
+    font-weight: 700 !important;
+    margin-top: 2px !important;
+}
