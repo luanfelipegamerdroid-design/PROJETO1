@@ -88,27 +88,58 @@ body {
     background-color: var(--bg-primary);
 }
 
-/* Ajuste da Logo com Imagem */
+/* Container da logo ajustado */
 .brand-logo-wrapper {
     display: flex;
     align-items: center;
+    gap: 12px;
     padding-left: 10px;
     border-left: 1px solid var(--border-color);
 }
 
-/* Ajuste da Logo com Imagem e Filtro Adaptativo */
-.main-logo-img {
-    height: 54px; /* Aumentado ligeiramente para dar mais leitura ao subtítulo */
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.05));
-    transition: filter 0.3s ease; /* Transição suave ao mudar o tema */
+/* 1. Recorta apenas o ícone do calendário da imagem original */
+.main-logo-icon-only {
+    height: 46px;
+    width: 50px;
+    object-fit: cover;
+    object-position: left center; /* Mantém apenas o lado esquerdo (calendário) visível */
 }
 
-/* Filtro inteligente aplicado automaticamente quando o Tema Escuro estiver ativo */
-.dark-theme .main-logo-img {
-    /* Inverte a luminosidade para tornar as partes escuras legíveis e ajusta o contraste */
-    filter: invert(0.9) hue-rotate(180deg) brightness(1.2) contrast(1.2);
+/* Estilização dos textos ao lado */
+.brand-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.brand-name-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0c2340; /* O azul escuro original da sua marca */
+}
+
+.brand-name-green {
+    color: #16a34a; /* O verde original */
+}
+
+.brand-subtitle-text {
+    font-size: 10px;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 2px;
+    letter-spacing: -0.2px;
+}
+
+/* ==========================================================================
+   CONTROLE DO TEMA ESCURO (SEM AFETAR O ÍCONE)
+   ========================================================================== */
+.dark-theme .brand-name-text {
+    color: #ffffff; /* No modo escuro, apenas o texto azul vira branco */
+}
+
+.dark-theme .brand-subtitle-text {
+    color: #94a3b8; /* Subtítulo fica com cinza mais claro legível */
 }
 
 /* Ícones de Ação da Direita */
