@@ -952,39 +952,46 @@ tr:hover td {
 }
 
 /* ==========================================================================
-   FORÇAR LARGURA TOTAL E COLUNAS NO PC (RESOLUÇÃO DO BUG DE TAMANHO)
+   AJUSTE DE LARGURA DO PAINEL - PC E MOBILE (SEM CORTAR FUNÇÕES)
    ========================================================================== */
 
-/* Remove qualquer trava antiga que estava espremendo o projeto no meio da tela do PC */
-.app-wrapper, 
+/* Mantém o wrapper e o corpo ocupando a tela inteira, mas sem quebrar os elementos fixos */
 body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+}
+
+.app-wrapper {
     width: 100% !important;
     max-width: 100% !important;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Força o container do painel a usar o espaço inteiro disponível na tela grande */
+/* Restringe o conteúdo do painel para não esticar infinitamente em telas gigantes */
 .dashboard-container {
     width: 100% !important;
-    max-width: 100% !important;
-    padding: 24px !important;
+    max-width: 1440px !important; /* Limite ideal para monitores de PC */
+    margin: 0 auto !important; /* Centraliza o conteúdo na tela */
+    padding: 20px !important;
     box-sizing: border-box;
 }
 
-/* Garante que a barra de boas-vindas se estique de ponta a ponta */
-.welcome-bar {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box;
-}
-
-/* Garante que a grade de cards volte a se espalhar em colunas no PC */
+/* Garante que a grade de cards fique perfeita no PC e quebre em colunas */
 @media (min-width: 769px) {
     .dashboard-grid {
         display: grid !important;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
-        gap: 20px !important;
+        grid-template-columns: repeat(5, 1fr) !important; /* Define exatamente 5 colunas como no seu print */
+        gap: 16px !important;
         width: 100% !important;
+    }
+}
+
+/* Ajuste fino para telas médias (Notebooks menores) */
+@media (max-width: 1200px) and (min-width: 769px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr) !important; /* Ajusta para 3 colunas se a tela encolher */
     }
 }
