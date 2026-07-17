@@ -765,32 +765,17 @@ tr:hover td {
 }
 
 /* ==========================================================================
-   ATUALIZAÇÃO DO CABEÇALHO - RESPONSIVO E CORRIGIDO
+   CABECALHO ADAPTÁVEL (PADRÃO DO MODELO)
    ========================================================================== */
 
-/* Cores do Tema Escuro do Modelo */
-.app-wrapper.dark-theme {
-    --bg-header-top: #0b1120;
-    --bg-header-bottom: #111827;
-    --text-primary-model: #ffffff;
-    --text-secondary-model: #9ca3af;
-    --red-model: #ef4444;
-    --red-hover-model: #dc2626;
-    background-color: #0b1120;
-    min-height: 100vh;
-    width: 100%; /* Garante que ocupe a largura total no PC */
-    display: flex;
-    flex-direction: column;
-}
-
-/* 1. Barra Superior (Linha 1) - Ocupa 100% da largura */
+/* Estilos base que se adaptam ao tema ativo do seu projeto */
 .main-app-header {
-    background-color: var(--bg-header-top);
+    background-color: var(--bg-primary, #0b1120);
     padding: 14px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #1f2937;
+    border-bottom: 1px solid var(--border-color, #1f2937);
     width: 100%;
 }
 
@@ -800,11 +785,10 @@ tr:hover td {
     gap: 16px;
 }
 
-/* Botões de Ícones */
 .btn-icon-alt {
     background: none;
     border: none;
-    color: var(--text-secondary-model);
+    color: var(--text-secondary, #9ca3af);
     cursor: pointer;
     padding: 8px;
     border-radius: 8px;
@@ -815,15 +799,14 @@ tr:hover td {
 }
 
 .btn-icon-alt:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary-model);
+    background-color: rgba(156, 163, 175, 0.15);
+    color: var(--text-primary, #ffffff);
 }
 
-/* Correcção do Alinhamento da Logo para não quebrar/sobrepor */
 .brand-wrapper {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
 .app-logo-img {
@@ -833,26 +816,20 @@ tr:hover td {
     display: block;
 }
 
-/* Caso a imagem falhe ou não seja encontrada, evita que ela quebre o texto */
-.app-logo-img[alt] {
-    font-size: 10px;
-    color: transparent;
-}
-
 .brand-text h1 {
     font-size: 22px;
     font-weight: 700;
-    color: var(--text-primary-model);
+    color: var(--text-primary, #ffffff);
     line-height: 1.1;
 }
 
-.brand-text p {
+.brand-text .brand-subtitle {
     font-size: 11px;
-    color: var(--text-secondary-model);
+    color: var(--text-secondary, #9ca3af);
     margin-top: 2px;
 }
 
-/* Badge de Notificação */
+/* Notificações */
 .badge-container {
     position: relative;
 }
@@ -873,41 +850,34 @@ tr:hover td {
     justify-content: center;
 }
 
-/* Container do Dashboard - Ajustado para expandir no PC */
-.dashboard-container {
-    width: 100%;
-    max-width: 1400px; /* Alarga o painel no PC para não ficar espremido */
-    margin: 0 auto;
-    padding: 24px;
-}
-
-/* 2. Barra de Boas-Vindas (Linha 2) */
+/* Card de Boas-Vindas */
 .welcome-bar {
-    background-color: var(--bg-header-bottom);
+    background-color: var(--bg-secondary, #111827);
     padding: 20px 24px;
     border-radius: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    margin-top: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #1f2937;
+    border: 1px solid var(--border-color, #1f2937);
 }
 
 .welcome-text h2 {
     font-size: 24px;
     font-weight: 700;
-    color: var(--text-primary-model);
+    color: var(--text-primary, #ffffff);
 }
 
 .welcome-text p {
     font-size: 14px;
-    color: var(--text-secondary-model);
+    color: var(--text-secondary, #9ca3af);
     margin-top: 4px;
 }
 
-/* Botão Sair do Sistema */
+/* Botão Sair Estilo Vermelho */
 .btn-danger-model {
-    background-color: var(--red-model);
+    background-color: #ef4444;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -922,46 +892,61 @@ tr:hover td {
 }
 
 .btn-danger-model:hover {
-    background-color: var(--red-hover-model);
+    background-color: #dc2626;
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE INDEPENDENTE (CELULAR SEM BUGAR O PC)
+   RESPONSIVIDADE EXCLUSIVA PARA CELULAR (IGUAL À IMAGEM DO MODELO)
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .main-app-header {
-        padding: 12px 16px;
+        padding: 10px 12px; /* Reduz recuo lateral para caber tudo perfeitamente */
     }
 
-    .brand-text p {
-        display: none; /* Esconde o subtítulo longo da logo no celular para dar espaço */
+    .header-left {
+        gap: 8px; /* Aproxima o botão hamburguer da logo */
     }
 
-    .brand-text h1 {
-        font-size: 19px;
+    .brand-wrapper {
+        gap: 8px;
     }
 
     .app-logo-img {
-        height: 32px;
+        height: 35px; /* Tamanho da logo idêntico ao modelo celular */
     }
 
-    .dashboard-container {
-        padding: 16px;
+    /* No modelo enviado, a frase "Gestão Inteligente" continua visível no celular */
+    .brand-text .brand-subtitle {
+        font-size: 10px;
+        white-space: nowrap; /* Impede que o texto quebre linha de forma feia */
     }
 
+    .brand-text h1 {
+        font-size: 20px;
+    }
+
+    .header-right {
+        gap: 8px; /* Ajusta os botões da direita */
+    }
+
+    /* Ajuste da segunda linha (Painel Geral) para telas pequenas */
     .welcome-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 16px;
+        flex-direction: row; /* Mantém lado a lado se houver espaço ou empilha elegante */
+        justify-content: space-between;
+        padding: 14px;
+        margin-top: 8px;
     }
 
-    .welcome-actions {
-        width: 100%;
+    .welcome-text h2 {
+        font-size: 18px;
+    }
+
+    .welcome-text p {
+        font-size: 11px;
     }
 
     .btn-danger-model {
-        width: 100%;
-        justify-content: center;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 }
