@@ -950,3 +950,41 @@ tr:hover td {
         font-size: 12px;
     }
 }
+
+/* ==========================================================================
+   FORÇAR LARGURA TOTAL E COLUNAS NO PC (RESOLUÇÃO DO BUG DE TAMANHO)
+   ========================================================================== */
+
+/* Remove qualquer trava antiga que estava espremendo o projeto no meio da tela do PC */
+.app-wrapper, 
+body {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Força o container do painel a usar o espaço inteiro disponível na tela grande */
+.dashboard-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 24px !important;
+    box-sizing: border-box;
+}
+
+/* Garante que a barra de boas-vindas se estique de ponta a ponta */
+.welcome-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Garante que a grade de cards volte a se espalhar em colunas no PC */
+@media (min-width: 769px) {
+    .dashboard-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+}
