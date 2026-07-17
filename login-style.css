@@ -1,20 +1,21 @@
 :root {
-    --primary-color: #2563eb;
-    --primary-hover: #1d4ed8;
-    --bg-gradient-start: #f8fafc;
-    --bg-gradient-end: #e2e8f0;
+    /* Paleta de Cores Extraída da Imagem */
+    --valipro-blue: #2563eb;        /* Azul principal dos botões e logo */
+    --valipro-bg-top: #0a2551;     /* Azul escuro do topo */
+    --valipro-bg-bottom: #f8fafc;  /* Cinza muito claro do fundo inferior */
+    --valipro-green: #16a34a;      /* Verde do checkmark e link de acesso */
+    
+    /* Cores de Texto e Bordas */
+    --text-main: #1e293b;         /* Cinza escuro para títulos */
+    --text-secondary: #64748b;    /* Cinza médio para descrições e labels */
+    --border-input: #e2e8f0;      /* Cor da borda dos campos */
+    --input-focus: #3b82f6;       /* Cor da borda em foco */
+    
+    /* Layout e Sombras */
     --card-bg: #ffffff;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --border-color: #cbd5e1;
-    --border-focus: #3b82f6;
-    --error-color: #ef4444;
-    --error-bg: #fef2f2;
-    --success-color: #10b981;
-    --success-bg: #ecfdf5;
-    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --radius: 12px;
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    --radius-lg: 16px;
+    --radius-md: 10px;
 }
 
 * {
@@ -26,81 +27,301 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background-color: var(--valipro-bg-bottom);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    position: relative;
+    overflow-x: hidden;
 }
 
-.login-container { width: 100%; max-width: 440px; }
+/* --- Container e Topo Azul --- */
+.login-container {
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
 
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45vh; /* Cobre quase metade da tela */
+    background-color: var(--valipro-bg-top);
+    z-index: -1; /* Fica atrás do card */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px; /* Alinha o logo */
+}
+
+/* Decoração sutil de fundo (círculo na imagem) */
+.bg-decoration {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.login-logo-img {
+    height: 50px; /* Tamanho proporcional do logo com calendário */
+    width: auto;
+}
+
+.logo-divider {
+    height: 40px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.slogan-text {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* --- O Card de Login --- */
 .login-card {
     background-color: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: var(--radius);
-    padding: 40px 36px;
-    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-lg);
+    padding: 45px 40px;
+    box-shadow: var(--shadow-card);
+    margin-top: 15vh; /* Empurra o card para baixo, sobre o azul */
 }
 
-.login-header { text-align: center; margin-bottom: 32px; }
-
-.logo-icon {
-    width: 56px; height: 56px;
-    background-color: var(--primary-color);
-    color: #ffffff; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px auto;
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+.login-welcome-header {
+    text-align: center;
+    margin-bottom: 35px;
 }
 
-.login-header h1 { color: var(--text-main); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-.login-header p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
-
-.alert {
-    padding: 12px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
-    margin-bottom: 20px; display: flex; align-items: center; border: 1px solid transparent;
+.user-avatar-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #eff6ff; /* Azul muito claro de fundo */
+    color: var(--valipro-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
 }
-.alert.error { background-color: var(--error-bg); color: var(--error-color); border-color: rgba(239, 68, 68, 0.2); }
-.alert.success { background-color: var(--success-bg); color: var(--success-color); border-color: rgba(16, 185, 129, 0.2); }
-.hidden { display: none !important; }
 
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; color: var(--text-main); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
-.input-wrapper { position: relative; display: flex; align-items: center; }
-.input-icon { position: absolute; left: 14px; color: var(--text-muted); display: flex; align-items: center; pointer-events: none; }
+.login-welcome-header h2 {
+    color: var(--text-main);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.login-welcome-header p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* --- Campos de Input --- */
+.input-group {
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0.7;
+}
 
 .input-wrapper input {
-    width: 100%; padding: 12px 16px 12px 42px;
-    border: 1px solid var(--border-color); border-radius: 8px;
-    font-size: 14px; color: var(--text-main); background-color: var(--card-bg);
-    outline: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm);
+    width: 100%;
+    padding: 14px 16px 14px 48px; /* Espaço para o ícone da esquerda */
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    color: var(--text-main);
+    background-color: #ffffff;
+    outline: none;
+    transition: all 0.2s ease;
 }
-.input-wrapper input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
 
-.toggle-password { position: absolute; right: 14px; background: none; border: none; color: var(--text-muted); cursor: pointer; }
-
-.form-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 13px; }
-.remember-me { display: flex; align-items: center; color: var(--text-muted); cursor: pointer; }
-.remember-me input { margin-right: 8px; accent-color: var(--primary-color); }
-.forgot-password { color: var(--primary-color); text-decoration: none; font-weight: 600; }
-.forgot-password:hover { text-decoration: underline; }
-
-.btn-primary {
-    width: 100%; padding: 12px 20px; background-color: var(--primary-color); color: #ffffff;
-    border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;
-    transition: all 0.2s ease; display: flex; justify-content: center; align-items: center; min-height: 46px;
+.input-wrapper input::placeholder {
+    color: #cbd5e1; /* Cor do placeholder bem clara */
 }
-.btn-primary:hover { background-color: var(--primary-hover); }
-.btn-primary:disabled { background-color: #94a3b8; cursor: not-allowed; }
 
-.btn-loader {
-    width: 20px; height: 20px; border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%; border-top-color: #ffffff; animation: spin 0.8s linear infinite;
+.input-wrapper input:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
-@keyframes spin { to { transform: rotate(360deg); } }
 
-.login-footer { text-align: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid #f1f5f9; font-size: 13px; color: var(--text-muted); }
-.login-footer a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
-.login-footer a:hover { text-decoration: underline; }
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+}
+
+/* --- Ações do Formulário (Lembrar/Esqueceu) --- */
+.form-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    font-size: 13px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.remember-me input {
+    margin-right: 9px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--valipro-blue); /* Cor do checkbox */
+    border: 1px solid var(--border-input);
+    border-radius: 4px;
+}
+
+.forgot-link {
+    color: var(--valipro-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Botão Principal --- */
+.btn-primary-valipro {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: var(--valipro-blue);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espaço entre texto e seta */
+}
+
+.btn-primary-valipro:hover {
+    background-color: #1d4ed8; /* Azul levemente mais escuro */
+}
+
+/* --- Rodapé (Solicitar Acesso) --- */
+.login-footer-register {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #f1f5f9;
+    text-align: center;
+}
+
+.register-info-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--valipro-bg-bottom);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.check-icon-bg {
+    width: 26px;
+    height: 26px;
+    background-color: #dcfce7; /* Verde muito claro */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-info-box p {
+    font-weight: 500;
+}
+
+.register-info-box a {
+    color: var(--valipro-blue);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.arrow-link-icon {
+    color: var(--valipro-blue);
+    opacity: 0.8;
+}
+
+/* --- Responsividade para Celulares --- */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    
+    .logo-group {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .logo-divider {
+        width: 40px;
+        height: 1px;
+    }
+    
+    .form-actions-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
