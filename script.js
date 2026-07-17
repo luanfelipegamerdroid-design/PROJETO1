@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (countSetores) countSetores.textContent = listaSetores.length;
 
+        // 1. Atualiza o select do formulário de cadastro de produtos
         if (productSectorInput) {
             productSectorInput.innerHTML = '<option value="">Selecione um Setor</option>';
             listaSetores.forEach((setor) => {
@@ -256,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // 2. Atualiza o filtro da aba "A Vencer"
         if (filterSectorAvencer) {
             filterSectorAvencer.innerHTML = '<option value="todos">Todos os Setores</option>';
             listaSetores.forEach((setor) => {
@@ -267,24 +269,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // 3. Atualiza a tabela da aba de Gerenciamento de Setores (CORRIGIDO)
         if (sectorTableBody) {
             sectorTableBody.innerHTML = '';
             listaSetores.forEach((setor) => {
                 const tr = document.createElement('tr');
+                
+                // Adicionado o atributo data-label para manter a consistência do seu layout mobile CSS
                 tr.innerHTML = `
-                    <td><strong>${setor.nome}</strong></td>
-                    <td style="text-align: center;">
+                    <td data-label="Nome do Setor"><strong>${setor.nome}</strong></td>
+                    <td data-label="Ação" style="text-align: center;">
                         <button class="btn-del btn-del-sector" data-id="${setor.id}">Remover</button>
                     </td>
                 `;
                 sectorTableBody.appendChild(tr);
             });
 
+            // Reatribui os eventos de clique para os botões de exclusão criados dinamicamente
             document.querySelectorAll('.btn-del-sector').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
                     const id = e.target.getAttribute('data-id');
                     if (confirm("Deseja remover este setor definitivamente? Isso não apagará os produtos vinculados a ele.")) {
-                        try { await deleteDoc(doc(db, "setores", id)); } catch (err) { alert("Erro ao deletar setor: " + err.message); }
+                        try { 
+                            await deleteDoc(doc(db, "setores", id)); 
+                        } catch (err) { 
+                            alert("Erro ao deletar setor: " + err.message); 
+                        }
                     }
                 });
             });
