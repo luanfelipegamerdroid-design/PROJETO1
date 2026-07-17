@@ -36,40 +36,159 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    padding: 20px;
+    padding: 0 0 40px 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dashboard-container {
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
 }
 
 /* ==========================================================================
-   2. CABEÇALHO (HEADER)
+   2. CABEÇALHO (HEADER) - ATUALIZADO CONFORME MODELO
    ========================================================================== */
-.dashboard-header {
+.main-top-navbar {
+    width: 100%;
     background-color: var(--bg-card);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 30px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Botão Hambúrguer */
+.btn-menu-hamburger {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.btn-menu-hamburger:hover {
+    background-color: var(--bg-primary);
+}
+
+/* Ajuste da Logo com Imagem */
+.brand-logo-wrapper {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-left: 1px solid var(--border-color);
+}
+
+.main-logo-img {
+    height: 48px; /* Altura ideal mantendo a proporção da sua logo.PNG */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Ícones de Ação da Direita */
+.btn-nav-action {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-nav-action:hover {
+    background-color: var(--bg-primary);
+}
+
+.btn-logout-icon:hover {
+    color: #ef4444;
+}
+
+/* Container de Notificação */
+.notification-bell-container {
+    position: relative;
+    cursor: pointer;
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.notification-bell-container:hover {
+    background-color: var(--bg-primary);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: #2563eb;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid var(--bg-card);
+}
+
+/* Caixa de Títulos do Painel (Abaixo da navbar) */
+.dashboard-header {
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
     margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
 }
 
 .brand h1 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #0f172a;
+}
+
+.dark-theme .brand h1 {
+    color: #f8fafc;
 }
 
 .brand p {
     font-size: 14px;
     color: var(--text-secondary);
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
 .header-actions {
@@ -533,7 +652,16 @@ tr:hover td {
    ========================================================================== */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 0;
+    }
+
+    .main-top-navbar {
+        padding: 0 16px;
+    }
+
+    .dashboard-container {
+        width: 100%;
+        padding: 0 12px;
     }
 
     .view-content, .module-section {
@@ -545,6 +673,11 @@ tr:hover td {
     .module-section h2 {
         padding-left: 8px;
         margin-bottom: 16px;
+    }
+
+    .dashboard-header {
+        padding: 16px;
+        margin-top: 16px;
     }
 
     table thead {
@@ -657,16 +790,6 @@ tr:hover td {
         background-color: #dc2626 !important;
     }
 
-    .dashboard-header {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-        padding: 12px;
-        background: var(--bg-card);
-        border-radius: 12px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    
     .header-actions {
         width: 100%;
         display: flex;
