@@ -97,12 +97,12 @@ body {
     border-left: 1px solid var(--border-color);
 }
 
-/* 1. Recorta apenas o ícone do calendário da imagem original */
+/* Correção para exibir o ícone do calendário por completo sem cortes */
 .main-logo-icon-only {
     height: 46px;
-    width: 50px;
-    object-fit: cover;
-    object-position: left center; /* Mantém apenas o lado esquerdo (calendário) visível */
+    width: 54px; /* Aumentado ligeiramente para dar folga ao desenho */
+    object-fit: contain; /* Garante que a imagem não seja cortada nem esticada */
+    object-position: left center; /* Alinha o calendário perfeitamente à esquerda */
 }
 
 /* Estilização dos textos ao lado */
