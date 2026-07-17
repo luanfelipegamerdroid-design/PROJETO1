@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectorTableBody = document.getElementById('sector-table-body');
     const colaboradorTableBody = document.getElementById('colaborador-table-body');
     const dashboardSubtitle = document.getElementById('dashboard-subtitle');
+    const dashboardMainTitle = document.getElementById('dashboard-main-title');
 
     const directSectorForm = document.getElementById('direct-sector-form');
     const directSectorNameInput = document.getElementById('direct-sector-name');
@@ -98,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewAddProduct) viewAddProduct.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Adicionar Produto";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Adicionar Produto ao Estoque";
         if (productBarcodeInput) productBarcodeInput.focus();
     }
@@ -106,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewDatabase) viewDatabase.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Gerenciamento de Nuvem";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Gerenciamento de Nuvem e Integração";
     }
 
@@ -113,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewConfiguracao) viewConfiguracao.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Configurações";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Configurações do Painel";
     }
 
@@ -120,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewColetados) viewColetados.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Produtos Coletados";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Produtos Coletados / Lista Geral";
     }
 
@@ -127,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewAVencer) viewAVencer.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Produtos Críticos";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Produtos Críticos - Vencimento Próximo";
         renderAVencerTable();
     }
@@ -135,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewSetor) viewSetor.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Gerenciar Setores";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Gerenciar e Cadastrar Setores da Loja";
     }
 
@@ -142,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewColaborador) viewColaborador.classList.remove('hidden');
         if (btnBack) btnBack.classList.remove('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Gerenciar Colaboradores";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Gerenciar e Cadastrar Colaboradores da Loja";
     }
 
@@ -150,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllTabs();
         if (viewDashboard) viewDashboard.classList.remove('hidden');
         if (btnBack) btnBack.classList.add('hidden');
+        if (dashboardMainTitle) dashboardMainTitle.textContent = "Painel Geral";
         if (dashboardSubtitle) dashboardSubtitle.textContent = "Painel Geral de Monitoramento";
     }
 
