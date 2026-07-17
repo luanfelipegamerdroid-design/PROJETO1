@@ -765,39 +765,33 @@ tr:hover td {
 }
 
 /* ==========================================================================
-   ATUALIZAÇÃO DO CABEÇALHO PARA O MODELO "VALIPRO"
+   ATUALIZAÇÃO DO CABEÇALHO - RESPONSIVO E CORRIGIDO
    ========================================================================== */
 
 /* Cores do Tema Escuro do Modelo */
 .app-wrapper.dark-theme {
-    --bg-header-top: #0b1120; /* Fundo bem escuro da linha 1 */
-    --bg-header-bottom: #111827; /* Fundo ligeiramente menos escuro da linha 2 */
+    --bg-header-top: #0b1120;
+    --bg-header-bottom: #111827;
     --text-primary-model: #ffffff;
     --text-secondary-model: #9ca3af;
     --red-model: #ef4444;
     --red-hover-model: #dc2626;
-    background-color: #0b1120; /* Fundo geral da página */
+    background-color: #0b1120;
     min-height: 100vh;
+    width: 100%; /* Garante que ocupe a largura total no PC */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Reset básico para garantir alinhamento */
-.app-wrapper * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* 1. Barra Superior (Linha 1 do Modelo) */
+/* 1. Barra Superior (Linha 1) - Ocupa 100% da largura */
 .main-app-header {
     background-color: var(--bg-header-top);
-    padding: 12px 20px;
+    padding: 14px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #1f2937; /* Linha sutil de divisão */
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    border-bottom: 1px solid #1f2937;
+    width: 100%;
 }
 
 .header-left, .header-right {
@@ -806,7 +800,7 @@ tr:hover td {
     gap: 16px;
 }
 
-/* Estilo para ícones brancos/clintantes */
+/* Botões de Ícones */
 .btn-icon-alt {
     background: none;
     border: none;
@@ -825,42 +819,49 @@ tr:hover td {
     color: var(--text-primary-model);
 }
 
-/* Wrapper da Logo e Texto */
+/* Correcção do Alinhamento da Logo para não quebrar/sobrepor */
 .brand-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
-/* Ajuste da imagem da Logo */
 .app-logo-img {
-    height: 40px; /* Ajuste conforme necessário */
+    height: 38px;
     width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Caso a imagem falhe ou não seja encontrada, evita que ela quebre o texto */
+.app-logo-img[alt] {
+    font-size: 10px;
+    color: transparent;
 }
 
 .brand-text h1 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--text-primary-model);
-    margin: 0;
+    line-height: 1.1;
 }
 
 .brand-text p {
     font-size: 11px;
     color: var(--text-secondary-model);
-    margin-top: -2px;
+    margin-top: 2px;
 }
 
-/* Badge de Notificação (O "3" azul) */
+/* Badge de Notificação */
 .badge-container {
     position: relative;
 }
 
 .notification-badge {
     position: absolute;
-    top: 2px;
-    right: 2px;
-    background-color: #2563eb; /* Azul da notificação */
+    top: 0;
+    right: 0;
+    background-color: #2563eb;
     color: white;
     font-size: 10px;
     font-weight: 700;
@@ -872,39 +873,46 @@ tr:hover td {
     justify-content: center;
 }
 
-/* 2. Barra de Boas-Vindas (Linha 2 do Modelo) */
+/* Container do Dashboard - Ajustado para expandir no PC */
+.dashboard-container {
+    width: 100%;
+    max-width: 1400px; /* Alarga o painel no PC para não ficar espremido */
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* 2. Barra de Boas-Vindas (Linha 2) */
 .welcome-bar {
     background-color: var(--bg-header-bottom);
-    padding: 20px;
+    padding: 20px 24px;
     border-radius: 12px;
-    margin-bottom: 24px;
-    margin-top: 16px; /* Espaço após o header fixo */
+    margin-bottom: 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #1f2937;
 }
 
 .welcome-text h2 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--text-primary-model);
 }
 
 .welcome-text p {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-secondary-model);
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
-/* Botão Sair Vermelho (Estilo do Modelo) */
+/* Botão Sair do Sistema */
 .btn-danger-model {
     background-color: var(--red-model);
     color: white;
     border: none;
-    padding: 10px 16px;
+    padding: 12px 20px;
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -917,23 +925,28 @@ tr:hover td {
     background-color: var(--red-hover-model);
 }
 
-/* Garante que o container do dashboard flua corretamente abaixo */
-.dashboard-container {
-    padding: 0 20px 20px 20px; /* Ajuste o padding conforme necessário */
-}
-
-/* Responsividade para telas menores */
+/* ==========================================================================
+   RESPONSIVIDADE INDEPENDENTE (CELULAR SEM BUGAR O PC)
+   ========================================================================== */
 @media (max-width: 768px) {
     .main-app-header {
-        padding: 10px;
+        padding: 12px 16px;
     }
-    
+
+    .brand-text p {
+        display: none; /* Esconde o subtítulo longo da logo no celular para dar espaço */
+    }
+
     .brand-text h1 {
-        font-size: 18px;
+        font-size: 19px;
     }
-    
+
     .app-logo-img {
         height: 32px;
+    }
+
+    .dashboard-container {
+        padding: 16px;
     }
 
     .welcome-bar {
@@ -942,11 +955,11 @@ tr:hover td {
         gap: 16px;
         padding: 16px;
     }
-    
+
     .welcome-actions {
         width: 100%;
     }
-    
+
     .btn-danger-model {
         width: 100%;
         justify-content: center;
