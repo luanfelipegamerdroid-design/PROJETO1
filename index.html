@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Validade - Acesso ao Sistema</title>
+    <title>ValiPro - Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,24 +12,32 @@
 <body>
 
     <div class="login-container">
+        <!-- Parte do Topo (Logo e Slogan) -->
+        <div class="header-top">
+            <div class="logo-group">
+                <img src="file_0000000069dc720eb2a3e41b76f5097b.png" alt="Logo ValiPro com Calendário" class="login-logo-img">
+                <span class="logo-divider"></span>
+                <p class="slogan-text">Gestão Inteligente <br> de Validades</p>
+            </div>
+            <!-- Decoração Sutil no Fundo -->
+            <div class="bg-decoration"></div>
+        </div>
+
+        <!-- Parte de Baixo (O Card de Login) -->
         <div class="login-card">
             
-            <div class="login-header">
-                <div class="logo-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 11l3 3L22 4"></path>
-                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            <div class="login-welcome-header">
+                <div class="user-avatar-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                 </div>
-                <h1>Web Validade</h1>
-                <p>Gerencie o vencimento dos seus produtos com eficiência</p>
+                <h2>Bem-vindo de volta!</h2>
+                <p>Faça login para acessar o sistema</p>
             </div>
 
-            <div id="alert-box" class="alert hidden">
-                <span id="alert-message"></span>
-            </div>
-
-            <form id="login-form" novalidate>
+            <form id="login-form">
                 <div class="input-group">
                     <label for="email">E-mail profissional</label>
                     <div class="input-wrapper">
@@ -39,7 +47,7 @@
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                             </svg>
                         </span>
-                        <input type="email" id="email" placeholder="nome@empresa.com" required autocomplete="email">
+                        <input type="email" id="email" placeholder="nome@empresa.com" required>
                     </div>
                 </div>
 
@@ -52,7 +60,7 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                             </svg>
                         </span>
-                        <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                        <input type="password" id="password" placeholder="••••••••" required>
                         <button type="button" id="toggle-password" class="toggle-password">
                             <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
@@ -62,27 +70,39 @@
                     </div>
                 </div>
 
-                <div class="form-actions">
+                <div class="form-actions-row">
                     <label class="remember-me">
                         <input type="checkbox" id="remember">
                         Lembrar meus dados
                     </label>
-                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    <a href="#" class="forgot-link">Esqueceu a senha?</a>
                 </div>
 
-                <button type="submit" id="btn-submit" class="btn-primary">
-                    <span class="btn-text">Entrar no Sistema</span>
-                    <span class="btn-loader hidden"></span>
+                <button type="submit" class="btn-primary-valipro">
+                    <span>Entrar no Sistema</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" x2="19" y1="12" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                 </button>
             </form>
 
-            <div class="login-footer">
-                <p>Ainda não possui uma conta? <a href="#">Solicite acesso</a></p>
+            <div class="login-footer-register">
+                <div class="register-info-box">
+                    <div class="check-icon-bg">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <p>Ainda não possui uma conta? <a href="#">Solicite acesso</a></p>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-link-icon">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
             </div>
 
         </div>
     </div>
 
-    <script src="login-script.js"></script>
 </body>
 </html>
