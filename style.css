@@ -201,7 +201,7 @@ body {
     border: 2px solid var(--bg-card);
 }
 
-/* Caixa de Títulos do Painel (Abaixo da navbar) */
+/* Caixa de Títulos do Painel com largura reduzida em 40% */
 .dashboard-header {
     background-color: var(--bg-card);
     padding: 24px;
@@ -213,6 +213,22 @@ body {
     margin-top: 24px;
     margin-bottom: 24px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    
+    /* MODIFICAÇÃO SOLICITADA: Ocupa apenas 60% da largura (redução de 40%) */
+    width: 60%; 
+    /* Garante que o card fique alinhado à esquerda acompanhando o fluxo dos blocos abaixo */
+    margin-right: auto; 
+}
+
+/* Ajuste responsivo para o card não ficar quebrado ou pequeno demais no celular */
+@media (max-width: 768px) {
+    .dashboard-header {
+        padding: 16px;
+        margin-top: 16px;
+        /* Em telas menores (como a do print), 85% ou 90% evita que o texto quebre linhas desnecessariamente */
+        width: 90%; 
+        margin-right: auto;
+    }
 }
 
 .brand h1 {
