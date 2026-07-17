@@ -96,10 +96,19 @@ body {
     border-left: 1px solid var(--border-color);
 }
 
+/* Ajuste da Logo com Imagem e Filtro Adaptativo */
 .main-logo-img {
-    height: 48px; /* Altura ideal mantendo a proporção da sua logo.PNG */
+    height: 54px; /* Aumentado ligeiramente para dar mais leitura ao subtítulo */
     width: auto;
     object-fit: contain;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.05));
+    transition: filter 0.3s ease; /* Transição suave ao mudar o tema */
+}
+
+/* Filtro inteligente aplicado automaticamente quando o Tema Escuro estiver ativo */
+.dark-theme .main-logo-img {
+    /* Inverte a luminosidade para tornar as partes escuras legíveis e ajusta o contraste */
+    filter: invert(0.9) hue-rotate(180deg) brightness(1.2) contrast(1.2);
 }
 
 /* Ícones de Ação da Direita */
